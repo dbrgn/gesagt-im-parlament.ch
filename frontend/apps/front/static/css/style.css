@@ -143,6 +143,9 @@ body.contact ul li {
     color: inherit;
 }
 
+.person a:hover {
+    text-decoration: none;
+}
 
 /* Party colors */
 
