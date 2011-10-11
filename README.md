@@ -8,7 +8,7 @@ zu visualisieren.
 
 Screenshot:
 
-![Screenshot](https://raw.github.com/gwrtheyrn/Parlament/master/screenshot.png)
+![Screenshot](https://raw.github.com/gwrtheyrn/gesagt-im-parlament.ch/master/screenshot.png)
 
 Technologie, Aufbau
 -------------------
