@@ -136,6 +136,7 @@ INSTALLED_APPS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'context_processors.debug_mode',
+    'context_processors.mustaches',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -13,7 +13,9 @@
     <script src="{{ STATIC_URL }}js/jquery-ui-1.8.16.custom.min.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.isotope-1.4.1.js"></script>
     <script src="{{ STATIC_URL }}js/tag-cloud.js"></script>
-    <script src="{{ STATIC_URL }}js/mustaches.js"></script>
+    {% if mustachify %}
+        <script src="{{ STATIC_URL }}js/mustaches.js"></script>
+    {% endif %}
 
 </head>
 <body class="{% block bodyclass %}{% endblock %}">
