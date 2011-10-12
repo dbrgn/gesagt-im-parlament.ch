@@ -16,8 +16,9 @@
                     {% if person.party %}<li><strong>Partei:</strong> {{ person.party.full_name }}</li>{% endif %}
                     {% if person.faction %}<li><strong>Fraktion:</strong> {{ person.faction.full_name }}</li>{% endif %}
                     {% if person.council or person.function %}<li><strong>Funktion:</strong> {{ person.function }} im {{ person.get_council_display }}</li>{% endif %}
-                    <li><strong>Biografie:</strong> <a href="http://www.parlament.ch/e/suche/pages/biografie.aspx?biografie_id={{ person.id }}">http://www.parlament.ch/e/suche/pages/biografie.aspx?biografie_id={{ person.id }}</a></li>
                     <li><strong>Berücksichtigte Parlamentarische Beiträge:</strong> {{ affair_count }} </li>
+                    <li><a href="http://www.parlament.ch/e/suche/pages/biografie.aspx?biografie_id={{ person.id }}">Biografie auf parlament.ch</a></li>
+                    <li><a href="http://www.parlament.ch/d/suche/Seiten/resultate.aspx?collection=CV&sort=GN&suir_urh_key=PER_{{ person.id }}_&way=desc">Vorstösse auf parlament.ch</a></li>
                 </ul>
             </div>
         </div>
