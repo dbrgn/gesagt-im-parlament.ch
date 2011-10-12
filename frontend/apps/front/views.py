@@ -102,9 +102,10 @@ class Search(ListView):
     def get_queryset(self):
         self.q = filter(lambda c: c.isalnum() or c.isspace(), self.request.GET.get('q', u''))
         if self.q:
-            return self.model.objects.filter(
-                Q(name__icontains=self.q) | Q(party__short_name__istartswith=self.q)
-            )
+            result = self.model.objects
+            for word in self.q.split():
+                result = result.filter(Q(name__icontains=word) | Q(party__short_name__istartswith=word))
+            return result
         return None
 
     def get_context_data(self, **kwargs):
