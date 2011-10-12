@@ -161,3 +161,9 @@ body.contact ul li {
 .label.gps { background-color: #82BB61; }
 .label.csp { background-color: #1095A8; }
 .label.bdp { color: #333; background-color: #FFDF00; }
+
+/* 2 click buttons fixes */
+
+#socialshareprivacy label {
+    width: inherit;
+}
