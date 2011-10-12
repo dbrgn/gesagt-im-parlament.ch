@@ -39,7 +39,8 @@ class Person(models.Model):
     def photo(self, size):
         relpath = os.path.join('img', 'portraits', '%s-%ux%u.jpg' % (self.number, size, size))
         if os.path.exists(os.path.join(settings.STATIC_ROOT, relpath)):
-            return os.path.join(settings.STATIC_URL + relpath)
+            #return os.path.join(settings.STATIC_URL + relpath)
+            return 'https://github.com/gwrtheyrn/gesagt-im-parlament.ch/raw/master/frontend/apps/front/static/%s' % relpath
         return None
 
     def photo_large(self):
