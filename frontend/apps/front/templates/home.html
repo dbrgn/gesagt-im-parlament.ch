@@ -5,6 +5,19 @@
 {% block title %}Home{% endblock %}
 {% block bodyclass %}home{% endblock %}
 
+{% block additional_head %}
+    <script type="text/javascript">
+    /* <![CDATA[ */
+        (function() {
+            var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+            t.parentNode.insertBefore(s, t);
+        })();
+    /* ]]> */</script>
+{% endblock %}
+
 {% block content %}
     <h1>{% trans 'Was tut ein Parlamentarier?' %}</h1>
 
@@ -36,6 +49,13 @@
     <p>Falls du weitere Informationen möchtest, kannst du dich auf
     <a href="https://github.com/gwrtheyrn/gesagt-im-parlament.ch">GitHub</a> über die technischen
     Aspekte informieren, oder jemanden von uns direkt <a href="{% url 'contact' %}">kontaktieren</a>.</p>
+
+    <!-- flattr -->
+    <div id="flattr_wrapper" style="margin-top: 15px;">
+        <a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://gesagt-im-parlament.ch/"></a>
+        <noscript><a href="http://flattr.com/thing/466539/gesagt-im-parlament-ch" target="_blank">
+        <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
+    </div>
 
     <!-- 2 click share buttons -->
     <div id="socialshareprivacy"></div>

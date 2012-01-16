@@ -21,6 +21,8 @@
         <script src="{{ STATIC_URL }}js/mustaches.js"></script>
     {% endif %}
 
+    {% block additional_head %}{% endblock %}
+
 </head>
 <body class="{% block bodyclass %}{% endblock %}">
 
