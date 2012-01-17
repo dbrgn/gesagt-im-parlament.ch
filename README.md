@@ -29,8 +29,8 @@ Requirements
   * For the scraping: Scala
   * For the frontend: Python, Django, python-requests
 
-Setup
------
+Development
+-----------
 
 To setup the Django frontend, it is recommended that you use a python-virtualenv.
 
@@ -38,13 +38,28 @@ To setup the Django frontend, it is recommended that you use a python-virtualenv
   2. Install dependencies: `pip install -r requirements.txt`
   3. Run Django server: `./manage.py runserver`
 
-To reparse the data, issue the following commands:
+Scraping
+--------
 
-  1. `rm db.sqlite`
-  2. `./manage.py syncdb`
-  3. `./manage.py parse_affairs`
-  4. `./manage.py parse_persons`
+You need Java, Scala and Maven to run the affair scraper.
 
+  1. `cd scraping/affairs/`
+  2. `mvn package`
+  3. `cd target/`
+  4. `java -cp crawler-0.0.1-SNAPSHOT-jar-with-dependencies.jar ch.makeopendata.scraper.AffairScraper`
+
+If errors occur, they will be written into the `failures.txt` file.
+
+Parsing
+-------
+
+To parse the scraped data, issue the following commands:
+
+  1. `rm db.sqlite` (remove old database)
+  2. `./manage.py syncdb` (create new database)
+  3. `./manage.py parse_affairs path/to/affairs.json` (parse affairs.json)
+  4. `./manage.py parse_persons` (fetch person details from parlament.ch webservice)
+  5. `./manage.py fetch_photos` (fetch new photos from parlament.ch)
 
 License
 -------
