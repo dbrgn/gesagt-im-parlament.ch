@@ -7,8 +7,7 @@ from apps.front import models
 
 #BASE_URL = 'http://www.parlament.ch/SiteCollectionImages/profil/original/'
 BASE_URL = 'http://www.parlament.ch/SiteCollectionImages/profil/225x225/'
-SIZES = [
-    #(225, 225),
+ADDITIONAL_SIZES = [
     (120, 120),
 ]
 
@@ -26,9 +25,15 @@ class Command(NoArgsCommand):
     def handle_noargs(self, **options):
         numbers = models.Person.objects.values_list('number', flat=True).filter(number__isnull=False)
         for number in numbers:
+            # Check if file already exists
+            filepath = os.path.join(settings.STATIC_ROOT, 'img', 'portraits')
+            filename = '%s-%sx%s.jpg' % (number, 225, 225)
+            if os.path.exists(os.path.join(filepath, filename)):
+                print 'Image %s already exists.' % filename
+                continue
+
             # Fetch file
             url = '%s%s.jpg' % (BASE_URL, number)
-            filepath = os.path.join(settings.STATIC_ROOT, 'img', 'portraits')
             response = requests.get(url)
 
             # Raise exception if bad HTTP status
@@ -48,8 +53,8 @@ class Command(NoArgsCommand):
             
             # Write image at different sizes
             image = parser.close()
-            image.save(os.path.join(filepath, '%s-%sx%s.jpg' % (number, 225, 225)))
-            for size in SIZES:
+            image.save(os.path.join(filepath, filename))
+            for size in ADDITIONAL_SIZES:
                 image.thumbnail(size, Image.ANTIALIAS)
                 image.save(os.path.join(filepath, '%s-%sx%s.jpg' % (number, size[0], size[1])))
             self.printO('Fetched %s' % url)
