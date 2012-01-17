@@ -12,6 +12,7 @@
             </div>
             <div class="span12 attributes">
                 <h1>{{ person.name|capfirst }}{% if person.party %}, <span class="label {{ person.party|slugify }}">{{ person.party }}</span>{% endif %}</h1>
+
                 <ul class="unstyled">
                     {% if person.party %}<li><strong>Partei:</strong> {{ person.party.full_name }}</li>{% endif %}
                     {% if person.faction %}<li><strong>Fraktion:</strong> {{ person.faction.full_name }}</li>{% endif %}
@@ -20,6 +21,20 @@
                     <li><a href="http://www.parlament.ch/e/suche/pages/biografie.aspx?biografie_id={{ person.id }}">Biografie auf parlament.ch</a></li>
                     <li><a href="http://www.parlament.ch/d/suche/Seiten/resultate.aspx?collection=CV&sort=GN&suir_urh_key=PER_{{ person.id }}_&way=desc">Vorstösse auf parlament.ch</a></li>
                 </ul>
+
+                <!-- 2 click share buttons -->
+                <div id="socialshareprivacy" style="display:none;"></div>
+                <script src="{{ STATIC_URL }}js/jquery.socialshareprivacy.min.js"></script>
+                <script type="text/javascript">
+                    jQuery(document).ready(function($){
+                        if($('#socialshareprivacy').length > 0){
+                            $('#socialshareprivacy').socialSharePrivacy(); 
+                            $('#socialshareprivacy').show();
+                        }
+                    });
+                </script>
+                <!-- end 2 click share buttons -->
+
             </div>
         </div>
     </section>
