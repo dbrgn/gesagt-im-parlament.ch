@@ -29,6 +29,8 @@ class Command(NoArgsCommand):
             except models.Person.DoesNotExist:
                 person = models.Person()
                 person.id = c['id']
+            if len(person.name) == 0:
+                person.name = '%s %s' % (c['lastName'], c['firstName'])
             person.number = c['number']
             person.council = c['council']
             person.canton = c['canton']
