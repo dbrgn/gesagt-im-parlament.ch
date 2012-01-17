@@ -129,7 +129,10 @@ object Affair {
   }
 
   def extractSubmissionDate(website: TagNode): String = {
-    val nodes = website.evaluateXPath("//*[@id='content']/div[1]/div/dl/dd[2]").toList.map(_.asInstanceOf[TagNode])
+    val summaryItemsCount = website.evaluateXPath("//*[@id='content']/div[1]/div/dl/dd").toList.length
+    val index = summaryItemsCount - 2
+    val nodes = website.evaluateXPath("//*[@id='content']/div[1]/div/dl/dd[" + index + "]").toList.map(_.asInstanceOf[TagNode])
+
     if (!nodes.isEmpty) {
       nodes.first.getText.toString
     } else {
@@ -140,7 +143,9 @@ object Affair {
   }
 
   def extractCongress(website: TagNode): String = {
-    val nodes = website.evaluateXPath("//*[@id='content']/div[1]/div/dl/dd[3]").toList.map(_.asInstanceOf[TagNode])
+    val summaryItemsCount = website.evaluateXPath("//*[@id='content']/div[1]/div/dl/dd").toList.length
+    val index = summaryItemsCount - 1
+    val nodes = website.evaluateXPath("//*[@id='content']/div[1]/div/dl/dd[" + index + "]").toList.map(_.asInstanceOf[TagNode])
     if (!nodes.isEmpty) {
       nodes.first.getText.toString
     } else {
@@ -151,7 +156,8 @@ object Affair {
   }
 
   def extractState(website: TagNode): String = {
-    val nodes = website.evaluateXPath("//*[@id='content']/div[1]/div/dl/dd[4]").toList.map(_.asInstanceOf[TagNode])
+    val summaryItemsCount = website.evaluateXPath("//*[@id='content']/div[1]/div/dl/dd").toList.length
+    val nodes = website.evaluateXPath("//*[@id='content']/div[1]/div/dl/dd[" + summaryItemsCount + "]").toList.map(_.asInstanceOf[TagNode])
     if (!nodes.isEmpty) {
       nodes.first.getText.toString
     } else {
