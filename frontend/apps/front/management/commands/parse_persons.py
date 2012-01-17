@@ -6,7 +6,7 @@ from apps.front import models
 BASE_URL = 'http://ws.parlament.ch'
 
 class Command(NoArgsCommand):
-    help = 'Parse json file with affairs data and write it into database'
+    help = 'Get person data from parlament.ch web service and process it'
 
     def printO(self, message):
         """Print to stdout"""
@@ -48,6 +48,6 @@ class Command(NoArgsCommand):
             try:
                 person.save()
             except Exception as e:
-                self.printE('Failed to parse Person %s (%s %s)' % (obj['id'], obj['firstName'], obj['lastName']))
+                self.printE('Failed to parse Person %s (%s %s)' % (person['id'], person['firstName'], person['lastName']))
             else:
                 self.printO('Parsed Person [%s] %s' % (person.id, person.name))
