@@ -61,6 +61,14 @@ To parse the scraped data, issue the following commands:
   4. `./manage.py parse_persons` (fetch person details from parlament.ch webservice)
   5. `./manage.py fetch_photos` (fetch new photos from parlament.ch)
 
+If you have a previous database with councillor information that isn't available in the new database
+(e.g. because they weren't elected anymore), you can import the data using the command:
+
+  6. `./manage.py merge_oldpersons`
+
+The command assumes that your old database is a postgresql database called 'Parlament'. If not,
+edit the script directly.
+
 License
 -------
 
