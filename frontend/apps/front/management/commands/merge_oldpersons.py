@@ -44,6 +44,7 @@ class Command(NoArgsCommand):
                 if created:
                     faction.full_name = row.faction
                     faction.save()
+                person.faction = faction
                 person.biography_url = row.biography_url
                 try:
                     person.save()
