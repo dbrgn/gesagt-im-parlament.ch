@@ -1,25 +1,21 @@
 import json
-import re
 from itertools import chain
 from collections import defaultdict
-from django.http import HttpResponse
 from django.db.models import Count, Q
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import ListView, DetailView
 from apps.front import models
 from apps.front.stopwords import stopwords
 
 
 class Persons(ListView):
-    queryset = models.Faction.objects.annotate(person_count=Count('persons')).order_by('-person_count')
-    context_object_name = 'factions'
+    queryset = models.Party.objects.annotate(person_count=Count('persons')).order_by('-person_count')
+    context_object_name = 'parties'
     template_name = 'persons.html'
 
     def get_context_data(self, **kwargs):
         context = super(Persons, self).get_context_data(**kwargs)
-        nofaction_persons = models.Person.objects.all().filter(faction__isnull=True)
-        context['nofaction_persons'] = nofaction_persons
+        noparty_persons = models.Person.objects.all().filter(party__isnull=True)
+        context['noparty_persons'] = noparty_persons
         return context
 
 

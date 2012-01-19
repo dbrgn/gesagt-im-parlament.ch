@@ -7,43 +7,52 @@
     <h1>Parlamentarier</h1>
 
     <div>
-        <p>Hier findest du die Parlamentarier der Schweiz, geordnet nach Fraktion.
+        <p>Hier findest du die Parlamentarier der Schweiz, geordnet nach Partei.
         Klicke einfach auf das gewünschte Bild, um die Detailinformationen anzuzeigen.</p>
     </div>
     
-    <h2>Fraktionen</h2>
+    <h2>Parteien</h2>
     <div class="row alert-message block-message info">
-        <div class="span7">
+        {% for party in parties %}
+            {% if party.short_name %}
+                <span class="tag"><a href="#{{ party.short_name }}">{{ party.short_name }}</a> ({{ party.person_count }})</span> | 
+            {% endif %}
+        {% endfor %}
+        <span class="tag"><a href="#unknown">Unbekannt</a> ({{ noparty_persons.count }})</span>
+
+       <!-- <div class="span7">
             <ul class="unstyled">
-                {% for faction in factions|slice:":4" %}
-                <li><a href="#{{ faction.short_name }}">{{ faction.full_name }}</a> ({{ faction.person_count }} Pers.)</li>
+                {% for party in parties|slice:":10" %}
+                <li></li>
                 {% endfor %}
             </ul>
         </div>
         <div class="span7">
             <ul class="unstyled">
-                {% for faction in factions|slice:"4:" %}
-                <li><a href="#{{ faction.short_name }}">{{ faction.full_name }}</a> ({{ faction.person_count }} Pers.)</li>
+                {% for party in parties|slice:"10:" %}
+                <li><span class="label">{{ party.person_count }}</span> <a href="#{{ party.short_name }}">{{ party.full_name }}</a></li>
                 {% endfor %}
-                <li><a href="#unknown">Unbekannte Fraktion</a> ({{ nofaction_persons.count }} Pers.)</li>
+                <li><a href="#unknown">Unbekannte Partei</a> ({{ noparty_persons.count }} Pers.)</li>
             </ul>
-        </div>
+        </div>-->
     </div>
 
     <h2>Personen</h2>
 
-    {% for faction in factions %}
-        <h3 id="{{ faction.short_name }}">{{ faction.full_name }} ({{ faction.person_count }})</h3>
-        <div class="media-grid persons">
-            {% for person in faction.persons.all %}
-                {% include 'person_block.html' %}
-            {% endfor %}
-        </div>
+    {% for party in parties %}
+        {% if party.short_name %}
+            <h3 id="{{ party.short_name }}">{{ party.full_name }} ({{ party.person_count }})</h3>
+            <div class="media-grid persons">
+                {% for person in party.persons.all %}
+                    {% include 'person_block.html' %}
+                {% endfor %}
+            </div>
+        {% endif %}
     {% endfor %}
 
-    <h3 id="unknown">Unbekannte Fraktion ({{ nofaction_persons.count }})</h3>
+    <h3 id="unknown">Unbekannte Partei ({{ noparty_persons.count }})</h3>
     <div class="media-grid persons">
-        {% for person in nofaction_persons %}
+        {% for person in noparty_persons %}
             {% include 'person_block.html' %}
         {% endfor %}
     </div>
