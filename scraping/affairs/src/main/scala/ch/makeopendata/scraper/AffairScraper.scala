@@ -14,7 +14,7 @@ object AffairScraper extends App {
 
   val gson = new Gson
 
-  for (year <- 2011 to 2001 by -1) {
+  for (year <- 2012 to 1996 by -1) {
     for (gsType <- 1 to 5) {
       var failureCount = 0
       for (gs <- 0 to 999) {
