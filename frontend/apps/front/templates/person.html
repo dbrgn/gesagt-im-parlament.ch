@@ -22,73 +22,75 @@
                     <li><a href="http://www.parlament.ch/d/suche/Seiten/resultate.aspx?collection=CV&sort=GN&suir_urh_key=PER_{{ person.id }}_&way=desc">Vorstösse auf parlament.ch</a></li>
                 </ul>
 
-                <!-- 2 click share buttons -->
                 <div id="socialshareprivacy" style="display:none;"></div>
-                <script src="{{ STATIC_URL }}js/jquery.socialshareprivacy.min.js"></script>
-                <script type="text/javascript">
-                    jQuery(document).ready(function($){
-                        if($('#socialshareprivacy').length > 0){
-                            $('#socialshareprivacy').socialSharePrivacy(); 
-                            $('#socialshareprivacy').show();
-                        }
-                    });
-                </script>
-                <!-- end 2 click share buttons -->
-
             </div>
         </div>
     </section>
 
 
-  <div id="container" />
-  
-  <script>
+    <div id="container" />
+
+    <script>
     $(function(){
-      var $container = $('#container');
-      $container.isotope({
-          itemSelector: '.element'
-      });
-
-      // create / load item map
-      var words = {{ words|safe }};
-
-      // add cloud of heinzkunz as default content
-      addTagMap($container, words)
-
-      // get all selectable options
-      var $optionSets = $('#options .option-set'),
-          $optionLinks = $optionSets.find('a');
-
-      // set the click action on all the options
-      $optionLinks.click(function(){
-          var $this = $(this);
-          // don't proceed if already selected
-          if ( $this.hasClass('selected') ) {
+        var $container = $('#container');
+        $container.isotope({
+            itemSelector: '.element'
+        });
+  
+        // create / load item map
+        var words = {{ words|safe }};
+  
+        // add cloud of heinzkunz as default content
+        addTagMap($container, words)
+  
+        // get all selectable options
+        var $optionSets = $('#options .option-set'),
+            $optionLinks = $optionSets.find('a');
+  
+        // set the click action on all the options
+        $optionLinks.click(function(){
+            var $this = $(this);
+            // don't proceed if already selected
+            if ( $this.hasClass('selected') ) {
+              return false;
+            }
+  
+            // select new option, deselect old option
+            var $optionSet = $this.parents('.option-set');
+            $optionSet.find('.selected').removeClass('selected');
+            $this.addClass('selected');
+  
+            // make option object dynamically, i.e. { filter: '.my-filter-class' }
+            var options = {},
+                key = $optionSet.attr('data-option-key'),
+                value = $this.attr('data-option-value');
+            // parse 'false' as false boolean
+            value = value === 'false' ? false : value;
+            options[ key ] = value;
+            if ( key === 'politician' ) {
+                removeAllTags($container);
+                addTagMap($container, words); // add tags for politician
+            } else {
+              // otherwise, apply new options
+              $container.isotope( options );
+            }
+  
             return false;
-          }
-
-          // select new option, deselect old option
-          var $optionSet = $this.parents('.option-set');
-          $optionSet.find('.selected').removeClass('selected');
-          $this.addClass('selected');
-
-          // make option object dynamically, i.e. { filter: '.my-filter-class' }
-          var options = {},
-              key = $optionSet.attr('data-option-key'),
-              value = $this.attr('data-option-value');
-          // parse 'false' as false boolean
-          value = value === 'false' ? false : value;
-          options[ key ] = value;
-          if ( key === 'politician' ) {
-              removeAllTags($container);
-              addTagMap($container, words); // add tags for politician
-          } else {
-            // otherwise, apply new options
-            $container.isotope( options );
-          }
-
-          return false;
-      });
+        });
     });
-  </script>
+    </script>
+
+    <!-- 2 click share buttons -->
+    <script type="text/javascript">
+        $(function($){
+            $.getScript("{{ STATIC_URL }}js/jquery.socialshareprivacy.min.js", function() {
+                if ($('#socialshareprivacy').length > 0) {
+                    $('#socialshareprivacy').socialSharePrivacy(); 
+                    $('#socialshareprivacy').show();
+                }
+            });
+        });
+    </script>
+    <!-- end 2 click share buttons -->
+
 {% endblock %}
