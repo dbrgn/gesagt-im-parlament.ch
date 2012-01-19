@@ -59,16 +59,13 @@
     <!-- end flattr -->
 
     <!-- 2 click share buttons -->
-    <div id="socialshareprivacy" style="displa:hidden;"></div>
+    <div id="socialshareprivacy"></div>
     <script src="{{ STATIC_URL }}js/jquery.socialshareprivacy.min.js"></script>
     <script type="text/javascript">
-        $(function($){
-            $.getScript("{{ STATIC_URL }}js/jquery.socialshareprivacy.min.js", function() {
-                if ($('#socialshareprivacy').length > 0) {
-                    $('#socialshareprivacy').socialSharePrivacy(); 
-                    $('#socialshareprivacy').show();
-                }
-            });
+        jQuery(document).ready(function($){
+            if($('#socialshareprivacy').length > 0){
+                $('#socialshareprivacy').socialSharePrivacy(); 
+            }
         });
     </script>
     <!-- end 2 click share buttons -->
