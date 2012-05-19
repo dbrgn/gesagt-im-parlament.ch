@@ -5,7 +5,7 @@ from django.conf import settings
 
 
 class Faction(models.Model):
-    short_name = models.CharField(max_length=10, blank=True, null=True, primary_key=True)
+    short_name = models.CharField(max_length=10, primary_key=True)
     full_name = models.CharField(max_length=63, blank=True, null=True)
     
     def __unicode__(self):
@@ -13,7 +13,7 @@ class Faction(models.Model):
 
 
 class Party(models.Model):
-    short_name = models.CharField(max_length=10, blank=True, null=True, primary_key=True)
+    short_name = models.CharField(max_length=10, primary_key=True)
     full_name = models.CharField(max_length=63, blank=True, null=True)
 
     def __unicode__(self):
