@@ -18,6 +18,10 @@ DATABASES['default'] = {
 INSTALLED_APPS = (
     # Contrib apps
     'django.contrib.staticfiles',
+
     # Own apps
     'apps.front',
+
+    # 3rd party apps
+    'gunicorn',
 )
