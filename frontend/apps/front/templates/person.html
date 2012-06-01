@@ -23,7 +23,7 @@
                 </ul>
 
                 <!-- 2 click share buttons -->
-                <div id="socialshareprivacy" style="display:none;"></div>
+                {% comment %}                <div id="socialshareprivacy" style="display:none;"></div>
                 <script src="{{ STATIC_URL }}js/jquery.socialshareprivacy.min.js"></script>
                 <script type="text/javascript">
                     jQuery(document).ready(function($){
@@ -34,6 +34,7 @@
                     });
                 </script>
                 <!-- end 2 click share buttons -->
+                {% endcomment %}
 
             </div>
         </div>
