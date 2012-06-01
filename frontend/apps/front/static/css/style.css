@@ -147,6 +147,10 @@ body.contact ul li {
     color: inherit;
 }
 
+body.contact a.sponsorlink {
+    margin-right: 50px;
+}
+
 .person a:hover {
     text-decoration: none;
 }
