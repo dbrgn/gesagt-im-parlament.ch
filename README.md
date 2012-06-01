@@ -36,7 +36,8 @@ To setup the Django frontend, it is recommended that you use a python-virtualenv
 
   1. Activate your virtualenv
   2. Install dependencies: `pip install -r requirements.txt`
-  3. Run Django server: `./manage.py runserver`
+  3. Collect staticfiles: `./manage.py collectstatic`
+  4. Run Django server: `./manage.py runserver`
 
 Scraping
 --------
