@@ -30,7 +30,7 @@ object AffairScraper extends App {
               val affair = Affair(node)
               if (affair.submitter.size > 0) {
                 val json = gson.toJson(affair)
-                println(gsIdPart + " saved")
+                println(gsIdPart + " saved (title: \"" + affair.title + "\")")
                 append(fileName, json)
               } else {
                 println(gsIdPart + " was not submitted by a member of NR/SR - discarded")
