@@ -116,7 +116,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     # Contrib apps
-#    'django.contrib.auth',
+    'django.contrib.auth',
     'django.contrib.sessions',
 #    'django.contrib.messages',
     'django.contrib.staticfiles',
