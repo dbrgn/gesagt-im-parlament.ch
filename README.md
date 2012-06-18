@@ -74,3 +74,16 @@ License
 -------
 
 This code is - unless noted otherwise - distributed under a BSD like license.
+
+Media mentions
+--------------
+
+ * 05.06.12 [Digitale Gesellschaft](http://www.digitale-gesellschaft.ch/2012/06/05/opendata-ch-konferenz-projekte/)
+ * 28.05.12 [Beitrag auf Politnetz](http://www.politnetz.ch/beitrag/14675)
+ * 09.05.12 [BILAN](http://www.bilan.ch/articles/techno/la-suisse-va-t-elle-laisser-l%E2%80%99economie-surfer-sur-ses-donnees)
+ * 01.04.12 [infoblog.li](http://infoblog.li/innovation-auf-basis-von-open-data/)
+ * 30.01.12 [itopia](http://www.itopia.ch/repository/Publikationen/120130\_SGVW\_fokusartikel-OGD\_definitiv.pdf)
+ * 23.10.11 [philippkueng.ch](http://philippkueng.ch/makeopendatach-2011.html)
+ * 17.10.11 [Telepolis](http://www.heise.de/tp/blogs/4/150631)
+ * 12.10.11 [datavisualization.ch](http://datavisualization.ch/events/review-of-switzerlands-first-open-data-camp/)
+ * 07.10.11 [IFI Uni Zürich](http://www.ifi.uzh.ch/ddis/news/opendataparliment.html)
