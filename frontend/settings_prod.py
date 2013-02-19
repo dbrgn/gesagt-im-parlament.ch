@@ -6,6 +6,8 @@ from settings import *
 DEBUG = False
 TEMPLATE_DEBUG = False
 
+ALLOWED_HOSTS = ['.gesagt-im-parlament.ch']
+
 DATABASES['default'] = {
     'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
     'NAME': 'dbrgn_parlament',       # Or path to database file if using sqlite3.
