@@ -78,6 +78,7 @@ This code is - unless noted otherwise - distributed under a BSD like license.
 Media mentions
 --------------
 
+ * 28.06.12 [Open Government Data Studie Schweiz](http://www.zora.uzh.ch/63318/1/20120628093057_merlin-id_7116.pdf)
  * 05.06.12 [Digitale Gesellschaft](http://www.digitale-gesellschaft.ch/2012/06/05/opendata-ch-konferenz-projekte/)
  * 28.05.12 [Beitrag auf Politnetz](http://www.politnetz.ch/beitrag/14675)
  * 09.05.12 [BILAN](http://www.bilan.ch/articles/techno/la-suisse-va-t-elle-laisser-l%E2%80%99economie-surfer-sur-ses-donnees)
